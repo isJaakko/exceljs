@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const filename = path.resolve(__dirname, "../data", "data.xlsx");
-const readFile = async () => {
+const readFileSync = async () => {
   const options = {
     sharedStrings: "emit",
     hyperlinks: "emit",
@@ -22,10 +22,6 @@ const readFile = async () => {
         B: "E",
         C: "F",
         D: "G",
-        a: "D",
-        b: "E",
-        c: "F",
-        d: "G",
       };
 
       if (pattern.test(answers)) {
@@ -33,8 +29,8 @@ const readFile = async () => {
           .toString()
           .split("")
           .forEach((answer) => {
-            const Char = answerMap[answer];
-            const index = `${Char}${rowNumber}`;
+            const col = answerMap[answer];
+            const index = `${col}${rowNumber}`;
 
             if (!Char) {
               return;
@@ -58,4 +54,6 @@ const readFile = async () => {
   await workbook.xlsx.writeFile(filename);
 };
 
-readFile();
+const readFileAsync = () => {};
+
+readFileSync();
