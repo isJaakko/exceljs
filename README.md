@@ -1,1 +1,7 @@
 # exceljs
+
+## run
+```
+yarn build
+```
+
